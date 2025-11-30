@@ -5,9 +5,11 @@ import { products } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ShoppingCart, Check } from 'lucide-react';
+import { ArrowLeft, Check } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useRouter } from 'next/navigation';
 
@@ -40,20 +42,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white dark:bg-card">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold">
-            AutoHub
-          </Link>
-          <Link href="/cart">
-            <Button variant="outline">
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Cart
-            </Button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
@@ -171,10 +160,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     Added to Cart
                   </>
                 ) : (
-                  <>
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Add to Cart
-                  </>
+                  'Add to Cart'
                 )}
               </Button>
               <Button
@@ -222,6 +208,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

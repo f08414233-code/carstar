@@ -1,16 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { CheckCircle, Package, ArrowRight } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const { clearCart } = useCart();
   const [sessionId, setSessionId] = useState<string | null>(null);
 
@@ -25,17 +26,10 @@ export default function SuccessPage() {
   }, [searchParams, clearCart]);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white dark:bg-card">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold">
-            AutoHub
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header />
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="flex-1 container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto">
           <Card className="p-8 text-center">
             <div className="mb-6 flex justify-center">
@@ -97,6 +91,8 @@ export default function SuccessPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

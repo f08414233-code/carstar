@@ -3,6 +3,8 @@
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowLeft } from 'lucide-react';
@@ -18,20 +20,10 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-white dark:bg-card">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold">
-              AutoHub
-            </Link>
-            <Link href="/shop">
-              <Button variant="outline">Continue Shopping</Button>
-            </Link>
-          </div>
-        </header>
+      <div className="min-h-screen bg-background flex flex-col">
+        <Header />
 
-        <div className="container mx-auto px-4 py-16">
+        <div className="flex-1 container mx-auto px-4 py-16">
           <div className="max-w-md mx-auto text-center">
             <ShoppingBag className="w-24 h-24 mx-auto mb-6 text-muted-foreground" />
             <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
@@ -45,25 +37,17 @@ export default function CartPage() {
             </Link>
           </div>
         </div>
+
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white dark:bg-card">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold">
-            AutoHub
-          </Link>
-          <Link href="/shop">
-            <Button variant="outline">Continue Shopping</Button>
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="flex-1 container mx-auto px-4 py-8">
         {/* Back Button */}
         <Link href="/shop" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6">
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -210,6 +194,8 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

@@ -6,14 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, CreditCard, Lock } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { ArrowLeft, CreditCard } from 'lucide-react';
 
 export default function CheckoutPage() {
-  const router = useRouter();
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, totalPrice } = useCart();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -67,16 +67,10 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-background">
-        <header className="border-b bg-white dark:bg-card">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold">
-              AutoHub
-            </Link>
-          </div>
-        </header>
+      <div className="min-h-screen bg-background flex flex-col">
+        <Header />
 
-        <div className="container mx-auto px-4 py-16">
+        <div className="flex-1 container mx-auto px-4 py-16">
           <div className="max-w-md mx-auto text-center">
             <h1 className="text-3xl font-bold mb-4">No Items to Checkout</h1>
             <p className="text-muted-foreground mb-8">
@@ -87,26 +81,17 @@ export default function CheckoutPage() {
             </Link>
           </div>
         </div>
+
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white dark:bg-card">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold">
-            AutoHub
-          </Link>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Lock className="w-4 h-4" />
-            <span className="text-sm">Secure Checkout</span>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="flex-1 container mx-auto px-4 py-8">
         {/* Back Button */}
         <Link
           href="/cart"
@@ -313,6 +298,8 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
