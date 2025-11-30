@@ -6,6 +6,8 @@ import { ProductCategory } from '@/types/product';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -33,19 +35,7 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white dark:bg-card">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold">
-            AutoHub
-          </Link>
-          <Link href="/cart">
-            <Button variant="outline">
-              Cart
-            </Button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <div className="container mx-auto px-4 py-8">
         {/* Page Header */}
@@ -138,6 +128,8 @@ export default function ShopPage() {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 }
